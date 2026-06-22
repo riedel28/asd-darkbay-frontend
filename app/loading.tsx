@@ -3,13 +3,10 @@ import {
   CardAction,
   CardContent,
   CardDescription,
-  CardFooter,
   CardHeader,
   CardTitle
 } from '@/components/ui/card';
 import { Skeleton } from '@/components/ui/skeleton';
-
-const SKELETON_CARD_COUNT = 3;
 
 function AuctionCardSkeleton() {
   return (
@@ -39,11 +36,6 @@ function AuctionCardSkeleton() {
           ))}
         </div>
       </CardContent>
-
-      <CardFooter className="gap-2">
-        <Skeleton className="h-3 w-16 shrink-0" />
-        <Skeleton className="h-3 w-44 max-w-full" />
-      </CardFooter>
     </Card>
   );
 }
@@ -52,10 +44,10 @@ export default function Loading() {
   return (
     <div className="p-6" role="status" aria-label="Loading auctions">
       <main>
-        <div className="container mx-auto max-w-lg">
+        <div className="container mx-auto max-w-2xl space-y-6">
           <Skeleton className="mb-4 h-7 w-24" />
           <div className="space-y-4">
-            {Array.from({ length: SKELETON_CARD_COUNT }, (_, index) => (
+            {Array.from({ length: 3 }, (_, index) => (
               <AuctionCardSkeleton key={index} />
             ))}
           </div>

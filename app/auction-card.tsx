@@ -8,16 +8,7 @@ import {
   CardTitle
 } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-
-const currencyFormatter = new Intl.NumberFormat('de-DE', {
-  style: 'currency',
-  currency: 'EUR'
-});
-
-const dateFormatter = new Intl.DateTimeFormat('de-DE', {
-  dateStyle: 'medium',
-  timeStyle: 'short'
-});
+import { dateFormatter, currencyFormatter } from '@/lib/format';
 
 export function AuctionCard({ auction }: { auction: Auction }) {
   return (

@@ -24,6 +24,14 @@ export interface PaginatedAuctions {
   meta: PaginationMeta;
 }
 
+export interface Offer {
+  id: string;
+  amount: number;
+  createdAt: string;
+  bidder: string;
+  auctionId: string;
+}
+
 export interface GetAuctionsParams {
   page?: number;
   limit?: number;
@@ -57,7 +65,10 @@ export async function getAuctions({
 }
 
 export async function getAuctionById(id: string): Promise<Auction> {
-  const url = new URL(`/auctions/${id}`, process.env.DARKBAY_API_URL);
+  const url = new URL(
+    `/auctions/${encodeURIComponent(id)}`,
+    process.env.DARKBAY_API_URL
+  );
   const response = await fetch(url, {
     headers: {
       Accept: 'application/json'
@@ -72,6 +83,29 @@ export async function getAuctionById(id: string): Promise<Auction> {
   }
 
   const data = (await response.json()) as Auction;
+
+  return data;
+}
+
+export async function getAuctionOffers(auctionId: string): Promise<Offer[]> {
+  const url = new URL(
+    `/auctions/${encodeURIComponent(auctionId)}/offers`,
+    process.env.DARKBAY_API_URL
+  );
+  const response = await fetch(url, {
+    headers: {
+      Accept: 'application/json'
+    },
+    cache: 'no-store'
+  });
+
+  if (!response.ok) {
+    throw new Error(
+      `DarkBay bid history request failed: ${response.status} ${response.statusText}`
+    );
+  }
+
+  const data = (await response.json()) as Offer[];
 
   return data;
 }
