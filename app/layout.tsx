@@ -41,10 +41,10 @@ export default function RootLayout({
       suppressHydrationWarning
     >
       <body className="min-h-full flex flex-col">
-        <header className="flex px-4 py-4 border-0 border-b bg-primary text-white">
-          <Link href="/" className="flex gap-2">
-            <AnchorIcon className="size-7" aria-hidden="true" />
-            <span className="font-semibold text-xl">Dark Bay</span>
+        <header className="flex px-4 py-2 border-0 border-b bg-primary text-white">
+          <Link href="/" className="flex gap-2 items-center">
+            <AnchorIcon className="size-4" aria-hidden="true" />
+            <span className="font-semibold text-lg">Dark Bay</span>
           </Link>
         </header>
         {children}

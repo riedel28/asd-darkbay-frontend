@@ -13,7 +13,7 @@ export default function ErrorPage({ error, reset }: ErrorPageProps) {
   return (
     <main className="flex flex-1 items-center justify-center p-6">
       <section
-        className="w-full max-w-lg rounded-xl border bg-card p-8 text-center shadow-sm"
+        className="w-full max-w-lg rounded-xl border bg-card p-8 text-center"
         aria-labelledby="error-title"
         aria-describedby="error-description"
       >

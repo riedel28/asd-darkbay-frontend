@@ -44,9 +44,9 @@ export default function Loading() {
   return (
     <div className="p-6" role="status" aria-label="Loading auctions">
       <main>
-        <div className="container mx-auto max-w-2xl space-y-6">
+        <div className="container mx-auto max-w-4xl space-y-6">
           <Skeleton className="mb-4 h-7 w-24" />
-          <div className="space-y-4">
+          <div className="grid md:grid-cols-2 gap-4">
             {Array.from({ length: 3 }, (_, index) => (
               <AuctionCardSkeleton key={index} />
             ))}

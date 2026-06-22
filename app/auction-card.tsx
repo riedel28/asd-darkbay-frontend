@@ -12,7 +12,7 @@ import { dateFormatter, currencyFormatter } from '@/lib/format';
 
 export function AuctionCard({ auction }: { auction: Auction }) {
   return (
-    <Card key={auction.id}>
+    <Card key={auction.id} className="hover:shadow-xs">
       <CardHeader className="gap-2">
         <CardTitle className="flex flex-row flex-wrap items-center gap-2 pr-2">
           {auction.title}
