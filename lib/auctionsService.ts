@@ -24,8 +24,20 @@ export interface PaginatedAuctions {
   meta: PaginationMeta;
 }
 
-export async function getAuctions(): Promise<PaginatedAuctions> {
+export interface GetAuctionsParams {
+  page?: number;
+  limit?: number;
+}
+
+export async function getAuctions({
+  page = 1,
+  limit = 5
+}: GetAuctionsParams = {}): Promise<PaginatedAuctions> {
   const url = new URL('/auctions', process.env.DARKBAY_API_URL);
+
+  url.searchParams.set('page', String(page));
+  url.searchParams.set('limit', String(limit));
+
   const response = await fetch(url, {
     headers: {
       Accept: 'application/json'

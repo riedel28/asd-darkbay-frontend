@@ -3,6 +3,7 @@ import { Geist, Geist_Mono, Figtree } from 'next/font/google';
 import './globals.css';
 import { cn } from '@/lib/utils';
 import { AnchorIcon } from 'lucide-react';
+import Link from 'next/link';
 
 const figtree = Figtree({ subsets: ['latin'], variable: '--font-sans' });
 
@@ -39,9 +40,11 @@ export default function RootLayout({
       )}
     >
       <body className="min-h-full flex flex-col">
-        <header className="flex gap-2 px-4 py-4 border-0 border-b bg-primary text-white">
-          <AnchorIcon className="size-7" aria-hidden="true" />
-          <span className="font-semibold text-xl">Dark Bay</span>
+        <header className="flex px-4 py-4 border-0 border-b bg-primary text-white">
+          <Link href="/" className="flex gap-2">
+            <AnchorIcon className="size-7" aria-hidden="true" />
+            <span className="font-semibold text-xl">Dark Bay</span>
+          </Link>
         </header>
         {children}
       </body>

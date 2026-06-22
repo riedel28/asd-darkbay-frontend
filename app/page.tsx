@@ -1,8 +1,13 @@
 import { getAuctions } from '@/lib/auctionsService';
 import { AuctionCard } from './auction-card';
+import { AuctionListPagination } from './auction-list-pagination';
 
-export default async function Home() {
-  const { data: auctions } = await getAuctions();
+export default async function Home(props: PageProps<'/'>) {
+  const { page, limit } = await props.searchParams;
+  const { data: auctions, meta } = await getAuctions({
+    page: Number(page ?? 1),
+    limit: Number(limit ?? 5)
+  });
 
   return (
     <div className="p-6">
@@ -14,6 +19,8 @@ export default async function Home() {
               <AuctionCard key={auction.id} auction={auction} />
             ))}
           </div>
+
+          <AuctionListPagination meta={meta} />
         </div>
       </main>
     </div>
