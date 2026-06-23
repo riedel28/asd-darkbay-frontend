@@ -4,6 +4,8 @@ import './globals.css';
 import { cn } from '@/lib/utils';
 import { AnchorIcon } from 'lucide-react';
 import Link from 'next/link';
+import { isAuthenticated } from '@/lib/auth';
+import { logoutAction } from '@/lib/authActions';
 
 const ibmPlexSans = IBM_Plex_Sans({
   subsets: ['latin'],
@@ -25,11 +27,13 @@ export const metadata: Metadata = {
   description: 'An underground auction marketplace.'
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const authenticated = await isAuthenticated();
+
   return (
     <html
       lang="en"
@@ -56,18 +60,27 @@ export default function RootLayout({
               </span>
             </Link>
             <nav className="flex items-center gap-1 text-sm">
-              <Link
-                href="/login"
-                className="rounded-sm px-2 py-1 font-medium text-muted-foreground transition hover:bg-muted hover:text-foreground"
-              >
-                Log in
-              </Link>
-              <Link
-                href="/register"
-                className="rounded-sm border border-primary/45 bg-primary/15 px-2 py-1 font-medium text-primary transition hover:bg-primary/25"
-              >
-                Register
-              </Link>
+              {authenticated ? (
+                <>
+                  <form action={logoutAction}>
+                    <button
+                      type="submit"
+                      className="rounded-sm border border-primary/45 bg-primary/15 px-2 py-1 font-medium text-primary transition hover:bg-primary/25"
+                    >
+                      Log out
+                    </button>
+                  </form>
+                </>
+              ) : (
+                <>
+                  <Link
+                    href="/login"
+                    className="rounded-sm px-2 py-1 font-medium text-muted-foreground transition hover:bg-muted hover:text-foreground"
+                  >
+                    Log in
+                  </Link>
+                </>
+              )}
             </nav>
           </div>
         </header>

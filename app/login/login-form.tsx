@@ -54,9 +54,7 @@ export function LoginForm() {
                 autoComplete="username"
                 aria-invalid={fieldState.invalid}
               />
-              {fieldState.invalid && (
-                <FieldError errors={[fieldState.error]} />
-              )}
+              {fieldState.invalid && <FieldError errors={[fieldState.error]} />}
             </Field>
           )}
         />
@@ -74,9 +72,7 @@ export function LoginForm() {
                 autoComplete="current-password"
                 aria-invalid={fieldState.invalid}
               />
-              {fieldState.invalid && (
-                <FieldError errors={[fieldState.error]} />
-              )}
+              {fieldState.invalid && <FieldError errors={[fieldState.error]} />}
             </Field>
           )}
         />
