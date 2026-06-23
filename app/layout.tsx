@@ -41,11 +41,25 @@ export default function RootLayout({
       suppressHydrationWarning
     >
       <body className="min-h-full flex flex-col">
-        <header className="flex px-4 py-2 border-0 border-b bg-primary text-white">
+        <header className="flex items-center justify-between gap-4 px-4 py-2 border-0 border-b bg-primary text-white">
           <Link href="/" className="flex gap-2 items-center">
             <AnchorIcon className="size-4" aria-hidden="true" />
             <span className="font-semibold text-lg">Dark Bay</span>
           </Link>
+          <nav className="flex items-center gap-1 text-sm">
+            <Link
+              href="/login"
+              className="rounded-md px-2 py-1 font-medium text-white/85 transition hover:bg-white/10 hover:text-white"
+            >
+              Log in
+            </Link>
+            <Link
+              href="/register"
+              className="rounded-md bg-white px-2 py-1 font-medium text-primary transition hover:bg-white/90"
+            >
+              Register
+            </Link>
+          </nav>
         </header>
         {children}
       </body>
