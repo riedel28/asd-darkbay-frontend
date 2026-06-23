@@ -6,8 +6,15 @@ export const loginSchema = z.object({
 });
 
 export const registerSchema = z.object({
-  username: z.string().trim().min(3, 'Username must be at least 3 characters.'),
-  password: z.string().min(4, 'Password must be at least 4 characters.')
+  username: z
+    .string()
+    .trim()
+    .max(60, 'Username must be at most 60 characters.')
+    .regex(
+      /^[a-zA-Z0-9_-]+$/,
+      'Username can only contain letters, numbers, underscores, and hyphens.'
+    ),
+  password: z.string().min(8, 'Password must be at least 8 characters.').max(72)
 });
 
 export type LoginFormValues = z.infer<typeof loginSchema>;

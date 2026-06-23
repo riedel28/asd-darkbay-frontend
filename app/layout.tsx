@@ -4,7 +4,7 @@ import './globals.css';
 import { cn } from '@/lib/utils';
 import { AnchorIcon } from 'lucide-react';
 import Link from 'next/link';
-import { isAuthenticated } from '@/lib/auth';
+import { getCurrentUsername, isAuthenticated } from '@/lib/auth';
 import { logoutAction } from '@/lib/authActions';
 
 const ibmPlexSans = IBM_Plex_Sans({
@@ -33,6 +33,7 @@ export default async function RootLayout({
   children: React.ReactNode;
 }>) {
   const authenticated = await isAuthenticated();
+  const currentUsername = authenticated ? await getCurrentUsername() : null;
 
   return (
     <html
@@ -62,6 +63,11 @@ export default async function RootLayout({
             <nav className="flex items-center gap-1 text-sm">
               {authenticated ? (
                 <>
+                  {currentUsername && (
+                    <span className="max-w-32 truncate px-2 py-1 font-mono text-xs text-muted-foreground">
+                      {currentUsername}
+                    </span>
+                  )}
                   <form action={logoutAction}>
                     <button
                       type="submit"

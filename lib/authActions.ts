@@ -7,9 +7,19 @@ import { AUTH_COOKIE_NAME } from '@/lib/auth';
 import { fetchAPI } from '@/lib/fetchAPI';
 
 type AuthResponse = {
-  token?: string;
-  access_token?: string;
+  access_token: string;
 };
+
+async function setAuthCookie(token: string) {
+  const cookieStore = await cookies();
+
+  cookieStore.set(AUTH_COOKIE_NAME, token, {
+    httpOnly: true,
+    sameSite: 'lax',
+    secure: process.env.NODE_ENV === 'production',
+    path: '/'
+  });
+}
 
 export async function loginAction(formData: FormData) {
   const credentials = loginSchema.parse({
@@ -37,14 +47,7 @@ export async function loginAction(formData: FormData) {
   const token = data.access_token;
 
   if (token) {
-    const cookieStore = await cookies();
-
-    cookieStore.set(AUTH_COOKIE_NAME, token, {
-      httpOnly: true,
-      sameSite: 'lax',
-      secure: process.env.NODE_ENV === 'production',
-      path: '/'
-    });
+    await setAuthCookie(token);
   }
 
   redirect('/');
@@ -72,22 +75,7 @@ export async function registerAction(formData: FormData) {
     );
   }
 
-  const data = (await response.json()) as AuthResponse;
-  const token = data.access_token;
-  console.log(token);
-
-  if (token) {
-    const cookieStore = await cookies();
-
-    cookieStore.set(AUTH_COOKIE_NAME, token, {
-      httpOnly: true,
-      sameSite: 'lax',
-      secure: process.env.NODE_ENV === 'production',
-      path: '/'
-    });
-  }
-
-  redirect(token ? '/' : '/login');
+  redirect('/login');
 }
 
 export async function logoutAction() {
