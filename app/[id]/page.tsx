@@ -43,12 +43,15 @@ export default async function AuctionDetailsPage(props: PageProps<'/[id]'>) {
                     {auction.status}
                   </Badge>
                 </div>
-                <CardTitle className="font-mono text-2xl sm:text-3xl">
+                <CardTitle className="font-mono text-xl sm:text-2xl">
                   {auction.title}
                 </CardTitle>
+                <CardDescription className="max-w-3xl leading-relaxed">
+                  {auction.description}
+                </CardDescription>
               </div>
 
-              <div className="shrink-0 border border-primary/40 bg-primary/10 px-4 py-3 text-left shadow-[0_0_30px_oklch(0.734_0.118_200.34_/_0.14)] sm:text-right">
+              <div className="shrink-0 rounded-sm border border-primary/40 bg-primary/10 px-4 py-3 text-left shadow-[0_0_30px_oklch(0.734_0.118_200.34_/_0.14)] sm:text-right">
                 <span className="block font-mono text-xs text-muted-foreground">
                   Current bid
                 </span>
@@ -57,17 +60,13 @@ export default async function AuctionDetailsPage(props: PageProps<'/[id]'>) {
                 </strong>
               </div>
             </div>
-
-            <CardDescription className="max-w-3xl leading-relaxed">
-              {auction.description}
-            </CardDescription>
           </CardHeader>
 
           <CardContent>
             <dl className="grid gap-px overflow-hidden rounded-sm border border-border/80 bg-border/80 sm:grid-cols-4">
               <div className="bg-background/85 px-3 py-3">
                 <dt className="font-mono text-xs text-muted-foreground">
-                  Reserve
+                  Starting price
                 </dt>
                 <dd className="mt-1 font-mono font-medium tabular-nums">
                   {currencyFormatter.format(auction.startingPrice)}
@@ -75,13 +74,13 @@ export default async function AuctionDetailsPage(props: PageProps<'/[id]'>) {
               </div>
               <div className="bg-background/85 px-3 py-3">
                 <dt className="font-mono text-xs text-muted-foreground">
-                  Vendor
+                  Posted by
                 </dt>
                 <dd className="mt-1 font-medium">{auction.seller}</dd>
               </div>
               <div className="bg-background/85 px-3 py-3">
                 <dt className="font-mono text-xs text-muted-foreground">
-                  Closes
+                  Ends
                 </dt>
                 <dd className="mt-1 font-medium">
                   <time dateTime={auction.endDate}>
@@ -91,7 +90,7 @@ export default async function AuctionDetailsPage(props: PageProps<'/[id]'>) {
               </div>
               <div className="bg-background/85 px-3 py-3">
                 <dt className="font-mono text-xs text-muted-foreground">
-                  Posted
+                  Started
                 </dt>
                 <dd className="mt-1 font-medium">
                   <time dateTime={auction.createdAt}>
@@ -130,7 +129,9 @@ export default async function AuctionDetailsPage(props: PageProps<'/[id]'>) {
                       {String(index + 1).padStart(2, '0')}
                     </span>
                     <div className="min-w-0">
-                      <p className="truncate font-medium">{offer.bidder}</p>
+                      <div className="flex gap-2">
+                        <p className="truncate font-medium">{offer.bidder}</p>
+                      </div>
                       <time
                         dateTime={offer.createdAt}
                         className="font-mono text-xs text-muted-foreground"
@@ -138,9 +139,12 @@ export default async function AuctionDetailsPage(props: PageProps<'/[id]'>) {
                         {dateFormatter.format(new Date(offer.createdAt))}
                       </time>
                     </div>
-                    <strong className="shrink-0 font-mono text-primary tabular-nums">
-                      {currencyFormatter.format(offer.amount)}
-                    </strong>
+                    <div className="flex flex-col gap-1.5 items-end">
+                      {index === 0 && <Badge>Highest bid</Badge>}
+                      <strong className="shrink-0 font-mono text-primary tabular-nums">
+                        {currencyFormatter.format(offer.amount)}
+                      </strong>
+                    </div>
                   </li>
                 ))}
               </ol>

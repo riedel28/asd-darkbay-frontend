@@ -53,10 +53,10 @@ export default async function RootLayout({
         <header className="border-b border-border/80 bg-background/92 backdrop-blur">
           <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-3">
             <Link href="/" className="flex items-center gap-2">
-              <span className="flex size-8 items-center justify-center rounded-sm border border-primary/40 bg-primary/10 text-primary shadow-[0_0_24px_oklch(0.734_0.118_200.34_/_0.18)]">
+              <span className="flex size-6 items-center justify-center rounded-sm border border-primary/40 bg-primary/10 text-primary shadow-[0_0_24px_oklch(0.734_0.118_200.34_/_0.18)]">
                 <AnchorIcon className="size-4" aria-hidden="true" />
               </span>
-              <span className="font-mono text-lg font-semibold text-foreground">
+              <span className="font-mono text-base font-semibold text-foreground">
                 Dark Bay
               </span>
             </Link>
@@ -64,7 +64,7 @@ export default async function RootLayout({
               {authenticated ? (
                 <>
                   {currentUsername && (
-                    <span className="max-w-32 truncate px-2 py-1 font-mono text-xs text-muted-foreground">
+                    <span className="max-w-32 truncate px-2 py-1 font-mono text-xs font-semibold">
                       {currentUsername}
                     </span>
                   )}

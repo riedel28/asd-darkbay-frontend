@@ -31,7 +31,7 @@ export function AuctionCard({ auction }: { auction: Auction }) {
           {auction.title}
         </CardTitle>
 
-        <CardDescription className="line-clamp-2 leading-relaxed">
+        <CardDescription className="line-clamp-2 -mt-2 leading-relaxed">
           {auction.description}
         </CardDescription>
         <CardAction className="text-right">
@@ -48,7 +48,7 @@ export function AuctionCard({ auction }: { auction: Auction }) {
         <dl className="grid grid-cols-2 gap-px overflow-hidden rounded-sm border border-border/70 bg-border/70">
           <div>
             <dt className="bg-background/90 px-3 pt-2 font-mono text-xs text-muted-foreground">
-              Reserve
+              Starting price
             </dt>
             <dd className="bg-background/90 px-3 pb-2 font-mono font-medium tabular-nums">
               {currencyFormatter.format(auction.startingPrice)}
@@ -56,7 +56,7 @@ export function AuctionCard({ auction }: { auction: Auction }) {
           </div>
           <div>
             <dt className="bg-background/90 px-3 pt-2 font-mono text-xs text-muted-foreground">
-              Vendor
+              Posted by
             </dt>
             <dd className="truncate bg-background/90 px-3 pb-2 font-medium">
               {auction.seller}
@@ -64,7 +64,7 @@ export function AuctionCard({ auction }: { auction: Auction }) {
           </div>
           <div>
             <dt className="bg-background/90 px-3 pt-2 font-mono text-xs text-muted-foreground">
-              Closes
+              Ends
             </dt>
             <dd className="bg-background/90 px-3 pb-2 font-medium">
               <time dateTime={auction.endDate}>
@@ -74,7 +74,7 @@ export function AuctionCard({ auction }: { auction: Auction }) {
           </div>
           <div>
             <dt className="bg-background/90 px-3 pt-2 font-mono text-xs text-muted-foreground">
-              Posted
+              Started
             </dt>
             <dd className="bg-background/90 px-3 pb-2 font-medium">
               <time dateTime={auction.createdAt}>
