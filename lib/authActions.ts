@@ -8,9 +8,7 @@ const AUTH_COOKIE_NAME = 'auth_token';
 
 type AuthResponse = {
   token?: string;
-  accessToken?: string;
   access_token?: string;
-  [key: string]: unknown;
 };
 
 export async function loginAction(formData: FormData) {
@@ -39,7 +37,7 @@ export async function loginAction(formData: FormData) {
   }
 
   const data = (await response.json()) as AuthResponse;
-  const token = data.token ?? data.accessToken ?? data.access_token;
+  const token = data.access_token;
 
   if (token) {
     const cookieStore = await cookies();
@@ -81,7 +79,7 @@ export async function registerAction(formData: FormData) {
   }
 
   const data = (await response.json()) as AuthResponse;
-  const token = data.token ?? data.accessToken ?? data.access_token;
+  const token = data.access_token;
 
   if (token) {
     const cookieStore = await cookies();

@@ -11,15 +11,15 @@ import {
 
 export default function LoginPage() {
   return (
-    <main className="flex min-h-[calc(100vh-53px)] items-center justify-center bg-muted/30 px-4 py-10">
-      <Card className="w-full max-w-sm bg-background">
+    <main className="flex min-h-[calc(100vh-88px)] items-center justify-center px-4 py-10">
+      <Card className="w-full max-w-sm bg-card/90">
         <CardHeader className="gap-2">
-          <div className="mb-2 flex size-10 items-center justify-center rounded-lg bg-primary/10 text-primary-foreground">
+          <div className="mb-2 flex size-10 items-center justify-center rounded-sm border border-primary/40 bg-primary/10 text-primary-foreground">
             <AnchorIcon className="size-5 text-primary" aria-hidden="true" />
           </div>
-          <CardTitle className="text-2xl">Log in</CardTitle>
+          <CardTitle className="font-mono text-2xl">Log in</CardTitle>
           <CardDescription>
-            Enter your details to access Dark Bay.
+            Enter your username and password to access Dark Bay.
           </CardDescription>
         </CardHeader>
 

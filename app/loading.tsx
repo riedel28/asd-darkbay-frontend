@@ -10,26 +10,28 @@ import { Skeleton } from '@/components/ui/skeleton';
 
 function AuctionCardSkeleton() {
   return (
-    <Card aria-hidden="true">
-      <CardHeader className="gap-2">
+    <Card aria-hidden="true" className="h-full">
+      <CardHeader className="gap-3">
+        <div className="flex items-center justify-between gap-3">
+          <Skeleton className="h-4 w-24" />
+          <Skeleton className="h-5 w-12" />
+        </div>
         <CardTitle className="flex items-center gap-2 pr-2">
-          <Skeleton className="h-5 w-36" />
-          <Skeleton className="h-5 w-14 rounded-full" />
+          <Skeleton className="h-6 w-56 max-w-full" />
         </CardTitle>
         <CardDescription className="space-y-2 pt-1">
           <Skeleton className="h-4 w-full" />
-          <Skeleton className="h-4 w-3/4" />
         </CardDescription>
         <CardAction className="space-y-1">
           <Skeleton className="ml-auto h-3 w-16" />
-          <Skeleton className="h-5 w-20" />
+          <Skeleton className="h-5 w-24" />
         </CardAction>
       </CardHeader>
 
       <CardContent>
-        <div className="grid grid-cols-2 gap-x-6 gap-y-3 border-t pt-4">
+        <div className="grid grid-cols-2 gap-px overflow-hidden rounded-sm border border-border/70 bg-border/70">
           {Array.from({ length: 4 }, (_, index) => (
-            <div key={index} className="space-y-1.5">
+            <div key={index} className="space-y-1.5 bg-background/90 px-3 py-2">
               <Skeleton className="h-3 w-20" />
               <Skeleton className="h-4 w-28 max-w-full" />
             </div>
@@ -42,18 +44,36 @@ function AuctionCardSkeleton() {
 
 export default function Loading() {
   return (
-    <div className="p-6" role="status" aria-label="Loading auctions">
-      <main>
-        <div className="container mx-auto max-w-4xl space-y-6">
-          <Skeleton className="mb-4 h-7 w-24" />
-          <div className="grid md:grid-cols-2 gap-4">
-            {Array.from({ length: 3 }, (_, index) => (
-              <AuctionCardSkeleton key={index} />
-            ))}
+    <main
+      className="px-4 py-6 sm:px-6 lg:py-8"
+      role="status"
+      aria-label="Loading auctions"
+    >
+      <div className="container mx-auto max-w-5xl space-y-5">
+        <section className="border border-border/80 bg-card/70 p-4 shadow-[0_18px_60px_oklch(0_0_0_/_0.22)]">
+          <div className="space-y-3">
+            <Skeleton className="h-9 w-36 max-w-full" />
+            <Skeleton className="h-4 w-64 max-w-full" />
+          </div>
+        </section>
+
+        <div className="grid gap-3 md:grid-cols-2">
+          {Array.from({ length: 5 }, (_, index) => (
+            <AuctionCardSkeleton key={index} />
+          ))}
+        </div>
+
+        <div className="mt-6 flex flex-col items-start justify-between gap-4 border border-border/80 bg-card/70 p-3 sm:flex-row sm:items-center">
+          <Skeleton className="h-8 w-8" />
+          <div className="flex items-center gap-2">
+            <Skeleton className="h-4 w-16" />
+            <Skeleton className="h-8 w-8" />
+            <Skeleton className="h-8 w-8" />
+            <Skeleton className="h-8 w-8" />
           </div>
         </div>
-      </main>
+      </div>
       <span className="sr-only">Loading auctions</span>
-    </div>
+    </main>
   );
 }
