@@ -22,7 +22,7 @@ export default async function AuctionDetailsPage(props: PageProps<'/[id]'>) {
   const isOpen = auction.status === 'open';
 
   return (
-    <div className="container mx-auto max-w-4xl space-y-5">
+    <div className="container mx-auto min-w-0 w-full max-w-4xl space-y-5">
       <Link
         href="/"
         className="inline-flex items-center gap-1.5 font-mono text-sm font-medium text-muted-foreground transition-colors hover:text-primary"

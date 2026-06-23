@@ -49,9 +49,9 @@ export default async function RootLayout({
       )}
       suppressHydrationWarning
     >
-      <body className="flex min-h-full flex-col">
-        <header className="border-b border-border/80 bg-background/92 backdrop-blur">
-          <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-3">
+      <body className="flex min-h-full flex-col relative">
+        <header className="border-b border-border/80 bg-background/92 backdrop-blur sticky h-[50px]">
+          <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-2">
             <Link href="/" className="flex items-center gap-2">
               <span className="flex size-6 items-center justify-center rounded-sm border border-primary/40 bg-primary/10 text-primary shadow-[0_0_24px_oklch(0.734_0.118_200.34_/_0.18)]">
                 <AnchorIcon className="size-4" aria-hidden="true" />
@@ -90,7 +90,9 @@ export default async function RootLayout({
             </nav>
           </div>
         </header>
-        {children}
+        <main className="flex min-w-0 flex-1 flex-col px-4 py-6 sm:px-6 lg:py-6">
+          {children}
+        </main>
       </body>
     </html>
   );

@@ -44,36 +44,29 @@ function AuctionCardSkeleton() {
 
 export default function Loading() {
   return (
-    <main
-      className="px-4 py-6 sm:px-6 lg:py-8"
-      role="status"
-      aria-label="Loading auctions"
-    >
-      <div className="container mx-auto max-w-5xl space-y-5">
-        <section className="border border-border/80 bg-card/70 p-4 shadow-[0_18px_60px_oklch(0_0_0_/_0.22)]">
-          <div className="space-y-3">
-            <Skeleton className="h-9 w-36 max-w-full" />
-            <Skeleton className="h-4 w-64 max-w-full" />
-          </div>
-        </section>
-
-        <div className="grid gap-3 md:grid-cols-2">
-          {Array.from({ length: 5 }, (_, index) => (
-            <AuctionCardSkeleton key={index} />
-          ))}
+    <div className="container mx-auto max-w-4xl space-y-5">
+      <section className="border border-border/80 bg-card/70 p-4 shadow-[0_18px_60px_oklch(0_0_0_/_0.22)]">
+        <div className="space-y-3">
+          <Skeleton className="h-9 w-36 max-w-full" />
+          <Skeleton className="h-4 w-64 max-w-full" />
         </div>
+      </section>
 
-        <div className="mt-6 flex flex-col items-start justify-between gap-4 border border-border/80 bg-card/70 p-3 sm:flex-row sm:items-center">
+      <div className="grid gap-3 md:grid-cols-2">
+        {Array.from({ length: 5 }, (_, index) => (
+          <AuctionCardSkeleton key={index} />
+        ))}
+      </div>
+
+      <div className="mt-6 flex flex-col items-start justify-between gap-4 border border-border/80 bg-card/70 p-3 sm:flex-row sm:items-center">
+        <Skeleton className="h-8 w-8" />
+        <div className="flex items-center gap-2">
+          <Skeleton className="h-4 w-16" />
           <Skeleton className="h-8 w-8" />
-          <div className="flex items-center gap-2">
-            <Skeleton className="h-4 w-16" />
-            <Skeleton className="h-8 w-8" />
-            <Skeleton className="h-8 w-8" />
-            <Skeleton className="h-8 w-8" />
-          </div>
+          <Skeleton className="h-8 w-8" />
+          <Skeleton className="h-8 w-8" />
         </div>
       </div>
-      <span className="sr-only">Loading auctions</span>
-    </main>
+    </div>
   );
 }
