@@ -124,22 +124,6 @@
   body {
     @apply bg-background text-foreground;
     color-scheme: dark;
-    background:
-      radial-gradient(circle at 16% 0%, rgb(35 77 91 / 34%), transparent 30rem),
-      radial-gradient(
-        circle at 88% 10%,
-        rgb(184 161 90 / 10%),
-        transparent 24rem
-      ),
-      linear-gradient(90deg, oklch(1 0 0 / 3%) 1px, transparent 1px),
-      linear-gradient(180deg, oklch(1 0 0 / 2.4%) 1px, transparent 1px),
-      var(--background);
-    background-size:
-      auto,
-      auto,
-      48px 48px,
-      48px 48px,
-      auto;
   }
   html {
     @apply font-sans;

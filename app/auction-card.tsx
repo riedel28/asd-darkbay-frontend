@@ -16,9 +16,9 @@ export function AuctionCard({ auction }: { auction: Auction }) {
   return (
     <Card
       key={auction.id}
-      className="h-full transition hover:border-primary/55 hover:bg-card"
+      className="h-full min-w-0 transition hover:border-primary/55 hover:bg-card"
     >
-      <CardHeader className="gap-3">
+      <CardHeader className="min-w-0 gap-3">
         <div className="flex items-center justify-between gap-3 font-mono text-xs text-muted-foreground">
           <Badge
             variant={isOpen ? 'default' : 'destructive'}
@@ -31,7 +31,7 @@ export function AuctionCard({ auction }: { auction: Auction }) {
           {auction.title}
         </CardTitle>
 
-        <CardDescription className="line-clamp-2 -mt-2 leading-relaxed">
+        <CardDescription className="line-clamp-2 -mt-2 leading-relaxed w-full">
           {auction.description}
         </CardDescription>
         <CardAction className="text-right">
@@ -45,7 +45,7 @@ export function AuctionCard({ auction }: { auction: Auction }) {
       </CardHeader>
 
       <CardContent>
-        <dl className="grid grid-cols-2 gap-px overflow-hidden rounded-sm border border-border/70 bg-border/70">
+        <dl className="grid min-w-0 grid-cols-1 gap-px overflow-hidden rounded-sm border border-border/70 bg-border/70 sm:grid-cols-2">
           <div>
             <dt className="bg-background/90 px-3 pt-2 font-mono text-xs text-muted-foreground">
               Starting price

@@ -12,8 +12,8 @@ export default async function Home(props: PageProps<'/'>) {
   });
 
   return (
-    <div className="container mx-auto max-w-4xl space-y-5">
-      <section className="border border-border/80 bg-card/70 p-4 shadow-[0_18px_60px_oklch(0_0_0_/_0.22)]">
+    <div className="mx-auto w-full min-w-0 max-w-4xl space-y-5">
+      <section className="min-w-0 rounded-sm border border-border/80 bg-card/70 p-4 shadow-[0_18px_60px_oklch(0_0_0_/_0.22)]">
         <div className="flex flex-col gap-4 md:flex-row md:items-start md:justify-between">
           <div className="space-y-2">
             <h1 className="font-mono text-2xl font-semibold text-foreground">
@@ -27,9 +27,13 @@ export default async function Home(props: PageProps<'/'>) {
         </div>
       </section>
 
-      <div className="grid gap-3 md:grid-cols-2">
+      <div className="grid min-w-0 gap-3 md:grid-cols-2">
         {auctions.map(auction => (
-          <Link key={auction.id} href={`/${auction.id}`} className="block">
+          <Link
+            key={auction.id}
+            href={`/${auction.id}`}
+            className="block min-w-0"
+          >
             <AuctionCard key={auction.id} auction={auction} />
           </Link>
         ))}

@@ -22,7 +22,7 @@ export default async function AuctionDetailsPage(props: PageProps<'/[id]'>) {
   const isOpen = auction.status === 'open';
 
   return (
-    <div className="container mx-auto min-w-0 w-full max-w-4xl space-y-5">
+    <div className="mx-auto w-full min-w-0 max-w-4xl space-y-5">
       <Link
         href="/"
         className="inline-flex items-center gap-1.5 font-mono text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
@@ -31,8 +31,8 @@ export default async function AuctionDetailsPage(props: PageProps<'/[id]'>) {
         Back to auctions
       </Link>
 
-      <Card>
-        <CardHeader className="gap-4 border-b pb-4">
+      <Card className="min-w-0">
+        <CardHeader className="min-w-0 gap-4 border-b pb-4">
           <div className="flex flex-col items-stretch justify-between gap-4 sm:flex-row sm:items-start">
             <div className="space-y-2">
               <div className="flex flex-wrap items-center gap-2">
@@ -63,7 +63,7 @@ export default async function AuctionDetailsPage(props: PageProps<'/[id]'>) {
         </CardHeader>
 
         <CardContent>
-          <dl className="grid gap-px overflow-hidden rounded-sm border border-border/80 bg-border/80 sm:grid-cols-4">
+          <dl className="grid min-w-0 gap-px overflow-hidden rounded-sm border border-border/80 bg-border/80 sm:grid-cols-2 lg:grid-cols-4">
             <div className="bg-background/85 px-3 py-3">
               <dt className="font-mono text-xs text-muted-foreground">
                 Starting price

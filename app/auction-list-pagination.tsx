@@ -8,7 +8,7 @@ import type { PaginationMeta } from '@/lib/auctionsService';
 
 export function AuctionListPagination({ meta }: { meta: PaginationMeta }) {
   return (
-    <div className="mt-6 flex flex-col items-start justify-between gap-4 border border-border/80 bg-card/70 p-3 sm:flex-row sm:items-center">
+    <div className="mt-6 flex flex-col items-start justify-between gap-4 border border-border/80 rounded-sm bg-card/70 p-3 sm:flex-row sm:items-center">
       <Pagination className="mx-0 w-auto justify-start">
         <PaginationContent>
           {Array.from({ length: meta.totalPages }, (_, index) => {

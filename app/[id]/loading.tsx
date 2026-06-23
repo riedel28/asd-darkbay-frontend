@@ -3,11 +3,11 @@ import { Skeleton } from '@/components/ui/skeleton';
 
 export default function AuctionDetailsLoading() {
   return (
-    <div className="container mx-auto max-w-4xl space-y-5">
+    <div className="mx-auto w-full min-w-0 max-w-4xl space-y-5">
       <Skeleton className="h-5 w-28" />
 
-      <Card>
-        <CardHeader className="gap-4 border-b pb-4">
+      <Card className="min-w-0">
+        <CardHeader className="min-w-0 gap-4 border-b pb-4">
           <div className="flex flex-col items-stretch justify-between gap-4 sm:flex-row sm:items-start">
             <div className="space-y-2">
               <div className="flex items-center gap-2">
@@ -26,7 +26,7 @@ export default function AuctionDetailsLoading() {
         </CardHeader>
 
         <CardContent>
-          <div className="grid gap-px overflow-hidden rounded-sm border border-border/80 bg-border/80 sm:grid-cols-4">
+          <div className="grid min-w-0 gap-px overflow-hidden rounded-sm border border-border/80 bg-border/80 sm:grid-cols-2 lg:grid-cols-4">
             {Array.from({ length: 4 }).map((_, index) => (
               <div key={index} className="space-y-2 bg-background/85 px-3 py-3">
                 <Skeleton className="h-3 w-16" />
@@ -43,7 +43,7 @@ export default function AuctionDetailsLoading() {
           <Skeleton className="h-5 w-20" />
         </div>
 
-        <Card className="gap-0 py-0">
+        <Card className="min-w-0 gap-0 py-0">
           <div className="divide-y divide-border/80">
             {Array.from({ length: 3 }).map((_, index) => (
               <div
