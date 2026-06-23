@@ -1,3 +1,5 @@
+import { fetchAPI } from '@/lib/fetchAPI';
+
 export type AuctionStatus = 'open' | 'closed';
 
 export interface Auction {
@@ -41,12 +43,12 @@ export async function getAuctions({
   page = 1,
   limit = 5
 }: GetAuctionsParams = {}): Promise<PaginatedAuctions> {
-  const url = new URL('/auctions', process.env.DARKBAY_API_URL);
+  const searchParams = new URLSearchParams();
 
-  url.searchParams.set('page', String(page));
-  url.searchParams.set('limit', String(limit));
+  searchParams.set('page', String(page));
+  searchParams.set('limit', String(limit));
 
-  const response = await fetch(url, {
+  const response = await fetchAPI(`/auctions?${searchParams}`, {
     headers: {
       Accept: 'application/json'
     },
@@ -65,11 +67,7 @@ export async function getAuctions({
 }
 
 export async function getAuctionById(id: string): Promise<Auction> {
-  const url = new URL(
-    `/auctions/${encodeURIComponent(id)}`,
-    process.env.DARKBAY_API_URL
-  );
-  const response = await fetch(url, {
+  const response = await fetchAPI(`/auctions/${encodeURIComponent(id)}`, {
     headers: {
       Accept: 'application/json'
     },
@@ -88,16 +86,15 @@ export async function getAuctionById(id: string): Promise<Auction> {
 }
 
 export async function getAuctionOffers(auctionId: string): Promise<Offer[]> {
-  const url = new URL(
+  const response = await fetchAPI(
     `/auctions/${encodeURIComponent(auctionId)}/offers`,
-    process.env.DARKBAY_API_URL
+    {
+      headers: {
+        Accept: 'application/json'
+      },
+      cache: 'no-store'
+    }
   );
-  const response = await fetch(url, {
-    headers: {
-      Accept: 'application/json'
-    },
-    cache: 'no-store'
-  });
 
   if (!response.ok) {
     throw new Error(

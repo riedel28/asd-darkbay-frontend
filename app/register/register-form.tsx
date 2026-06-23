@@ -8,7 +8,6 @@ import { registerSchema, type RegisterFormValues } from '@/lib/authSchemas';
 import { Button } from '@/components/ui/button';
 import {
   Field,
-  FieldDescription,
   FieldError,
   FieldGroup,
   FieldLabel
@@ -55,9 +54,7 @@ export function RegisterForm() {
                 autoComplete="username"
                 aria-invalid={fieldState.invalid}
               />
-              {fieldState.invalid && (
-                <FieldError errors={[fieldState.error]} />
-              )}
+              {fieldState.invalid && <FieldError errors={[fieldState.error]} />}
             </Field>
           )}
         />
@@ -75,10 +72,7 @@ export function RegisterForm() {
                 autoComplete="new-password"
                 aria-invalid={fieldState.invalid}
               />
-              <FieldDescription>Use at least 8 characters.</FieldDescription>
-              {fieldState.invalid && (
-                <FieldError errors={[fieldState.error]} />
-              )}
+              {fieldState.invalid && <FieldError errors={[fieldState.error]} />}
             </Field>
           )}
         />
